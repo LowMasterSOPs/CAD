@@ -1,0 +1,19 @@
+{
+  "name": "bolt-hole-placer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "clipper-lib": "^6.4.2",
+    "dxf-parser": "^1.1.4",
+    "dxf-writer": "^1.7.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

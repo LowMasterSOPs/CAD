@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hole Placer | Signs2Signs Tools</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%230B1B4A'/%3E%3Ctext x='32' y='38' font-size='24' text-anchor='middle' fill='%23F26B1D' font-family='Arial'%3EHP%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/src/ui.css">
+</head>
+<body>
+  <header class="site-head">
+    <h1>Hole Placer</h1>
+    <p class="lede">Import DXF → auto place drill/cable holes → export DXF</p>
+  </header>
+
+  <main class="layout">
+    <aside class="panel controls">
+      <h3>1) Upload</h3>
+      <input id="file" type="file" accept=".dxf,.svg,.DXF,.SVG" />
+      <div class="row">
+        <label>Units scale</label>
+        <input id="unitsScale" type="number" value="1" step="0.01">
+      </div>
+      <div class="row">
+        <label>Edge clearance (mm)</label>
+        <input id="edgeClear" type="number" value="15" step="1">
+      </div>
+      <div class="row">
+        <label>Drill Ø (mm)</label>
+        <input id="drillDia" type="number" value="5" step="0.1">
+      </div>
+      <div class="row">
+        <label>Target spacing (mm)</label>
+        <input id="spacing" type="number" value="200" step="1">
+      </div>
+      <div class="row">
+        <label>Mode</label>
+        <select id="mode">
+          <option value="border">Border (perimeter)</option>
+          <option value="centre_h">Centre-line (horizontal)</option>
+          <option value="centre_v">Centre-line (vertical)</option>
+          <option value="centre_both">Centre-line (both)</option>
+        </select>
+      </div>
+      <hr>
+      <h3>2) Cable holes (optional)</h3>
+      <div class="row">
+        <label>Cable Ø (mm)</label>
+        <input id="cableDia" type="number" value="10" step="0.1">
+      </div>
+      <div class="row">
+        <label>Cable spacing (mm)</label>
+        <input id="cableSpacing" type="number" value="150" step="1">
+      </div>
+      <p class="muted">Add a polyline on layer <b>CABLE_PATH</b> in your DXF to enable.</p>
+
+      <button id="btnPlace">Place Holes</button>
+      <button id="btnExport" disabled>Export DXF</button>
+      <div id="msg" class="msg"></div>
+    </aside>
+
+    <section class="canvas-wrap">
+      <div id="svgMount" class="canvas"></div>
+      <div class="legend">
+        <span class="legend-item"><i class="dot source"></i> Panel</span>
+        <span class="legend-item"><i class="dot drill"></i> Drill holes</span>
+        <span class="legend-item"><i class="dot cable"></i> Cable holes</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">Built in Manchester • v0.1 MVP</footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
